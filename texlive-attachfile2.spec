@@ -1,6 +1,6 @@
 Name:		texlive-attachfile2
 Version:	57959
-Release:	1
+Release:	2
 Summary:	Attach files into PDF
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/attachfile2
