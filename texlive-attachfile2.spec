@@ -3,7 +3,7 @@ Version:	69505
 Release:	1
 Summary:	Attach files into PDF
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/attachfile2
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/attachfile2
 License:	lppl1.3c
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.doc.r%{version}.tar.xz
