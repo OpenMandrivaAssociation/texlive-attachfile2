@@ -1,44 +1,28 @@
-Name:		texlive-attachfile2
-Version:	69505
-Release:	1
+%global tl_name attachfile2
+%global tl_revision 79461
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.12
+Release:	%{tl_revision}.1
 Summary:	Attach files into PDF
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/attachfile2
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/attachfile2.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Requires:	texlive(attachfile2.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package can be used to attach files to a PDF document. It
-is a further development of Scott Pakin's package attachfile
-for pdfTeX. Apart from bug fixes, this package adds support for
-dvips, some new options, and gets and writes meta information
-data about the attached files.
+This package can be used to attach files to a PDF document. It is a
+further development of Scott Pakin's package attachfile for pdfTeX.
+Apart from bug fixes, this package adds support for dvips, some new
+options, and gets and writes meta information data about the attached
+files.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_datadir}
-cp -a texmf-dist %{buildroot}%{_datadir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/attachfile2
-%{_texmfdistdir}/tex/latex/attachfile2
-%{_texmfdistdir}/scripts/attachfile2
-%doc %{_texmfdistdir}/doc/latex/attachfile2
-%doc %{_texmfdistdir}/doc/man/man1/*
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
